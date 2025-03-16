@@ -1,0 +1,34 @@
+{
+    "family": "rag-app",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "256",
+    "memory": "512",
+    "containerDefinitions": [
+        {
+            "name": "rag-app",
+            "image": "your-account-id.dkr.ecr.your-region.amazonaws.com/rag-app:latest",
+            "portMappings": [
+                {
+                    "containerPort": 8501,
+                    "protocol": "tcp"
+                }
+            ],
+            "secrets": [
+                {
+                    "name": "OPENAI_API_KEY",
+                    "valueFrom": "arn:aws:secretsmanager:region:account:secret:openai-api-key"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/rag-app",
+                    "awslogs-region": "your-region",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ],
+    "executionRoleArn": "arn:aws:iam::your-account-id:role/ecsTaskExecutionRole"
+} 
