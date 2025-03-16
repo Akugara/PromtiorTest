@@ -1,4 +1,4 @@
-# RAG Application
+<img width="831" alt="promptiordiagram" src="https://github.com/user-attachments/assets/8c3a5e70-0760-427e-8c6c-99cf2d478f82" /># RAG Application
 
 A Retrieval-Augmented Generation (RAG) application built with Streamlit and OpenAI.
 
